@@ -1,0 +1,553 @@
+
+.lullaby-studio {
+  position: relative;
+  overflow: hidden;
+  padding: 22px;
+  border: 1px solid rgba(249, 168, 212, 0.3);
+  border-radius: 22px;
+  color: #f9eaf5;
+  background:
+    radial-gradient(ellipse at 50% 45%, rgba(125, 86, 158, 0.28), transparent 65%),
+    linear-gradient(145deg, #302139, #21192f);
+  animation: studio-arrive 500ms ease both;
+}
+
+.studio-heading {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+}
+
+.studio-orb {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  color: #ffe4a3;
+  background: rgba(249, 168, 212, 0.12);
+  font-size: 27px;
+  box-shadow: 0 0 25px rgba(249, 168, 212, 0.12);
+}
+
+.studio-eyebrow {
+  margin: 0 0 4px;
+  color: #e8b6d1;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.studio-heading h3 {
+  margin: 0;
+  font-family: Georgia, serif;
+  font-size: 27px;
+  font-weight: 400;
+}
+
+.studio-caption {
+  margin: 5px 0 0;
+  color: #d4c4dc;
+  font-size: 13px;
+}
+
+.music-box-scene {
+  position: relative;
+  display: grid;
+  place-items: center;
+  height: 175px;
+  margin: 20px 0 14px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  background: radial-gradient(ellipse, #594064 0%, #30243e 65%, #251b31 100%);
+}
+
+.music-box {
+  z-index: 2;
+  font-size: 58px;
+  filter: drop-shadow(0 0 18px rgba(255, 206, 132, 0.45));
+  animation: music-box-float 3s ease-in-out infinite;
+}
+
+.music-box-moon,
+.music-box-sparkle {
+  position: absolute;
+  color: #ffdf9b;
+  font-size: 25px;
+}
+
+.music-box-moon {
+  top: 20px;
+  right: 24%;
+}
+
+.music-box-sparkle {
+  left: 25%;
+  top: 42%;
+}
+
+.music-box-glow {
+  position: absolute;
+  bottom: 20px;
+  width: 110px;
+  height: 25px;
+  border-radius: 50%;
+  background: rgba(255, 205, 139, 0.23);
+  filter: blur(14px);
+}
+
+.floating-music-note {
+  position: absolute;
+  bottom: 15px;
+  z-index: 3;
+  pointer-events: none;
+  font-size: 19px;
+  animation: note-float 2.4s ease-out forwards;
+}
+
+.melody-status {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin: 12px 0 16px;
+  color: #dfcfe5;
+  font-size: 12px;
+}
+
+.sound-indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #9b8ca7;
+}
+
+.sound-indicator.active {
+  background: #8be6b1;
+  box-shadow: 0 0 12px #8be6b1;
+  animation: sound-pulse 900ms ease-in-out infinite;
+}
+
+.studio-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+}
+
+.studio-controls button {
+  min-height: 42px;
+  padding: 10px 15px;
+  border: 1px solid rgba(249, 168, 212, 0.25);
+  border-radius: 999px;
+  cursor: pointer;
+  font: inherit;
+  font-size: 12px;
+  transition: transform 180ms ease, background 180ms ease;
+}
+
+.studio-controls button:hover {
+  transform: translateY(-2px);
+}
+
+.studio-primary {
+  color: #321e36;
+  background: #f49bc6;
+}
+
+.studio-secondary {
+  color: #f7e8f5;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.studio-secondary.selected {
+  color: #ffdf9b;
+  border-color: rgba(255, 223, 155, 0.65);
+  background: rgba(255, 223, 155, 0.12);
+}
+
+.studio-footnote {
+  margin: 16px 0 0;
+  color: #bca9c8;
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+@keyframes note-float {
+  0% { opacity: 0; transform: translateY(0) rotate(-10deg) scale(.7); }
+  15% { opacity: 1; }
+  100% { opacity: 0; transform: translateY(-145px) rotate(25deg) scale(1.2); }
+}
+
+@keyframes music-box-float {
+  0%, 100% { transform: translateY(0) rotate(-2deg); }
+  50% { transform: translateY(-5px) rotate(2deg); }
+}
+
+@keyframes sound-pulse {
+  50% { transform: scale(1.4); }
+}
+
+@keyframes studio-arrive {
+  from { opacity: 0; transform: translateY(8px) scale(.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lullaby-studio *,
+  .lullaby-studio {
+    animation-duration: 0.01ms !important;
+  }
+}
+
+/* Lullaby Studio — Midnight Observatory */
+
+.lullaby-studio {
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  max-width: 620px;
+  margin: 0 auto;
+  padding: clamp(24px, 5vw, 42px);
+  overflow: hidden;
+  color: #f8eefa;
+  font-family: inherit;
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(190, 126, 220, 0.15), transparent 55%),
+    linear-gradient(145deg, #30213b 0%, #25182f 55%, #201627 100%);
+  border: 1px solid rgba(221, 164, 226, 0.28);
+  border-radius: 28px;
+  box-shadow: 0 24px 70px rgba(8, 3, 15, 0.3), inset 0 1px rgba(255, 255, 255, 0.045);
+}
+
+.lullaby-studio::before,
+.lullaby-studio::after {
+  position: absolute;
+  z-index: -1;
+  content: "";
+  pointer-events: none;
+  border-radius: 50%;
+  filter: blur(2px);
+}
+
+.lullaby-studio::before {
+  width: 210px;
+  height: 210px;
+  top: -120px;
+  right: -70px;
+  background: rgba(208, 147, 228, 0.12);
+}
+
+.lullaby-studio::after {
+  width: 180px;
+  height: 180px;
+  bottom: -120px;
+  left: -70px;
+  background: rgba(133, 139, 226, 0.1);
+}
+
+/* Header */
+
+.lullaby-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 26px;
+}
+
+.lullaby-icon {
+  display: grid;
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  place-items: center;
+  color: #f5d5ff;
+  background: rgba(225, 176, 241, 0.1);
+  border: 1px solid rgba(229, 186, 244, 0.2);
+  border-radius: 16px;
+}
+
+.lullaby-header h2 {
+  margin: 0;
+  color: #fff0ff;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(27px, 4vw, 36px);
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -1.2px;
+}
+
+.lullaby-header p {
+  margin: 7px 0 0;
+  color: #cbb8d7;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* Moon and stars */
+
+.lullaby-visual {
+  position: relative;
+  display: grid;
+  min-height: 190px;
+  margin: 10px 0 26px;
+  overflow: hidden;
+  place-items: center;
+  background:
+    radial-gradient(ellipse at center, rgba(181, 132, 213, 0.15), transparent 68%),
+    rgba(18, 12, 29, 0.22);
+  border: 1px solid rgba(216, 170, 232, 0.13);
+  border-radius: 22px;
+}
+
+.lullaby-moon {
+  display: grid;
+  width: 104px;
+  height: 104px;
+  place-items: center;
+  color: #fff0ff;
+  font-size: 76px;
+  line-height: 1;
+  text-shadow: 0 0 25px rgba(239, 198, 255, 0.45);
+  transition: transform 0.4s ease, filter 0.4s ease;
+}
+
+.lullaby-moon.is-playing {
+  animation: lullaby-moon-float 3s ease-in-out infinite;
+  filter: drop-shadow(0 0 18px rgba(222, 174, 255, 0.45));
+}
+
+.lullaby-star {
+  position: absolute;
+  color: #f7d8ff;
+  opacity: 0.85;
+}
+
+.star-one {
+  top: 30px;
+  left: 24%;
+}
+
+.star-two {
+  right: 23%;
+  bottom: 34px;
+}
+
+.orbit-one,
+.orbit-two {
+  position: absolute;
+  width: 155px;
+  height: 155px;
+  border: 1px solid rgba(226, 190, 243, 0.18);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.orbit-two {
+  width: 205px;
+  height: 205px;
+  border-color: rgba(226, 190, 243, 0.09);
+}
+
+/* Track details */
+
+.lullaby-track {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 0 0 22px;
+  padding: 16px 18px;
+  color: #efd9fa;
+  background: rgba(255, 255, 255, 0.045);
+  border: 1px solid rgba(228, 190, 242, 0.13);
+  border-radius: 16px;
+}
+
+.lullaby-track > svg {
+  flex-shrink: 0;
+  color: #dfb5f5;
+}
+
+.lullaby-track strong {
+  display: block;
+  color: #fff0ff;
+  font-size: 15px;
+  font-weight: 650;
+}
+
+.lullaby-track p {
+  margin: 5px 0 0;
+  color: #c5b1d1;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+/* Playback controls */
+
+.lullaby-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-top: 22px;
+}
+
+.lullaby-controls button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  min-height: 45px;
+  padding: 0 16px;
+  color: #f5e7fc;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.3;
+  white-space: nowrap;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.055);
+  border: 1px solid rgba(224, 181, 240, 0.25);
+  border-radius: 13px;
+  box-shadow: none;
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.lullaby-controls button svg {
+  flex-shrink: 0;
+}
+
+.lullaby-controls button:hover {
+  background: rgba(215, 164, 240, 0.15);
+  border-color: rgba(231, 190, 250, 0.5);
+  transform: translateY(-2px);
+}
+
+.lullaby-controls button:focus-visible {
+  outline: 2px solid #e6bafa;
+  outline-offset: 3px;
+}
+
+.lullaby-controls button:first-child {
+  color: #28152f;
+  background: linear-gradient(135deg, #f4d8ff, #dcb6f3);
+  border-color: transparent;
+  box-shadow: 0 5px 20px rgba(195, 137, 224, 0.16);
+}
+
+.lullaby-controls button:first-child:hover {
+  background: linear-gradient(135deg, #f9e8ff, #e7c9fb);
+}
+
+.lullaby-controls button.active {
+  color: #f8dfff;
+  background: rgba(206, 157, 232, 0.14);
+  border-color: rgba(221, 174, 243, 0.38);
+}
+
+.lullaby-error {
+  margin: 0 0 12px;
+  color: #ffc3d1;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.lullaby-footnote {
+  margin: 24px 0 0;
+  color: #c9b4d4;
+  font-size: 13px;
+  line-height: 1.8;
+  text-align: center;
+}
+
+/* Modal integration */
+
+.lullaby-modal-content {
+  width: 100%;
+  min-width: 0;
+  padding: 0;
+}
+
+.lullaby-modal-content .lullaby-studio {
+  max-width: none;
+  border: 0;
+  border-radius: 22px;
+  box-shadow: none;
+}
+
+/* Animation */
+
+@keyframes lullaby-moon-float {
+  0%, 100% {
+    transform: translateY(0) rotate(-5deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(5deg);
+  }
+}
+
+/* Tablet and mobile */
+
+@media (max-width: 600px) {
+  .lullaby-studio {
+    padding: 22px 18px;
+    border-radius: 22px;
+  }
+
+  .lullaby-header {
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .lullaby-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 13px;
+  }
+
+  .lullaby-visual {
+    min-height: 155px;
+    margin-bottom: 20px;
+  }
+
+  .lullaby-moon {
+    width: 86px;
+    height: 86px;
+    font-size: 65px;
+  }
+
+  .lullaby-track {
+    padding: 14px;
+  }
+
+  .lullaby-controls {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 9px;
+  }
+
+  .lullaby-controls button {
+    width: 100%;
+    min-width: 0;
+    padding: 0 10px;
+    white-space: normal;
+  }
+
+  .lullaby-controls button:first-child {
+    grid-column: 1 / -1;
+  }
+
+  .lullaby-footnote {
+    margin-top: 20px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lullaby-moon.is-playing {
+    animation: none;
+  }
+
+  .lullaby-controls button,
+  .lullaby-moon {
+    transition: none;
+  }
+}

@@ -1,0 +1,251 @@
+
+.pip-ticker {
+  position: relative;
+  z-index: 20;
+  width: 100%;
+  overflow: hidden;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+  background: rgba(243, 165, 201, 0.08);
+  color: #f5b4d1;
+  white-space: nowrap;
+}
+
+.pip-ticker-track {
+  display: flex;
+  width: max-content;
+  animation: pip-marquee 32s linear infinite;
+}
+
+.pip-ticker-track span {
+  flex-shrink: 0;
+  padding-right: 35px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+}
+
+.pip-ticker:hover .pip-ticker-track {
+  animation-play-state: paused;
+}
+
+@keyframes pip-marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.pip-header {
+  position: relative;
+  z-index: 15;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+  width: min(1240px, calc(100% - 64px));
+  min-height: 82px;
+  margin-inline: auto;
+}
+
+.pip-brand {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 0;
+  border: 0;
+  background: transparent;
+  color: #fff2f8;
+  font-size: 19px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.pip-brand em {
+  color: #f3a5c9;
+  font-family: "Instrument Serif", Georgia, serif;
+  font-weight: 400;
+}
+
+.pip-brand-star {
+  display: grid;
+  place-items: center;
+  color: #ffd98a;
+  filter: drop-shadow(0 0 7px rgba(255, 217, 138, 0.55));
+  animation: pip-star-pulse 2.8s ease-in-out infinite;
+}
+
+@keyframes pip-star-pulse {
+  0%, 100% { transform: scale(1); filter: drop-shadow(0 0 5px #f3a5c955); }
+  50% { transform: scale(1.12); filter: drop-shadow(0 0 12px #ffd98a99); }
+}
+
+.pip-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(16px, 3vw, 36px);
+}
+
+.pip-nav-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: #e4d8ec;
+  font-size: 13px;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 0.2s ease;
+}
+
+.pip-nav-link:hover,
+.pip-nav-link.active {
+  color: #ffb2d2;
+}
+
+.pip-nav-indicator {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  color: #f5b4d1;
+  font-size: 10px;
+  opacity: 0;
+  transform: translate(-50%, 4px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.pip-nav-link:hover .pip-nav-indicator,
+.pip-nav-link.active .pip-nav-indicator {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+.pip-toolbar {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 5px;
+  padding: 5px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.055);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.035);
+}
+
+.pip-tool-button {
+  display: grid;
+  place-items: center;
+  width: 35px;
+  height: 35px;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: #f8eaf5;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.pip-tool-button:hover {
+  transform: translateY(-1px);
+  background: rgba(243, 165, 201, 0.16);
+  color: #ffb2d2;
+}
+
+.pip-toolbar-divider {
+  width: 1px;
+  height: 20px;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.day-mode .pip-brand {
+  color: #35263f;
+}
+
+.day-mode .pip-nav-link {
+  color: #655271;
+}
+
+.day-mode .pip-nav-link:hover,
+.day-mode .pip-nav-link.active {
+  color: #c25488;
+}
+
+.day-mode .pip-toolbar {
+  border-color: rgba(77, 49, 92, 0.15);
+  background: rgba(255, 255, 255, 0.65);
+}
+
+.day-mode .pip-tool-button {
+  color: #49324f;
+}
+
+@media (max-width: 850px) {
+  .pip-header {
+    width: calc(100% - 36px);
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 15px 0;
+  }
+
+  .pip-brand {
+    font-size: 17px;
+  }
+
+  .pip-toolbar {
+    margin-left: auto;
+  }
+
+  .pip-nav {
+    order: 3;
+    width: 100%;
+    justify-content: space-around;
+    gap: 10px;
+  }
+
+  .pip-nav-link {
+    min-height: 36px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 380px) {
+  .pip-header {
+    width: calc(100% - 24px);
+  }
+
+  .pip-brand {
+    gap: 6px;
+    font-size: 15px;
+  }
+
+  .pip-brand-star svg {
+    width: 19px;
+    height: 19px;
+  }
+
+  .pip-tool-button {
+    width: 31px;
+    height: 31px;
+  }
+
+  .pip-nav {
+    gap: 6px;
+  }
+
+  .pip-nav-link {
+    font-size: 11px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pip-ticker-track,
+  .pip-brand-star {
+    animation: none;
+  }
+
+  .pip-nav-link,
+  .pip-nav-indicator,
+  .pip-tool-button {
+    transition: none;
+  }
+}

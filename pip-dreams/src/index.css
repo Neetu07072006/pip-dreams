@@ -1,0 +1,4 @@
+/* Global reset is intentionally small; the full visual system lives in App.css. */
+html { min-width: 320px; }
+body { margin: 0; }
+#root { min-height: 100vh; }
