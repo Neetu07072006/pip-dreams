@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import { Music, Play, Pause, RotateCcw, Moon, Sparkles } from "lucide-react";
 import "./LullabyStudio.css";
 
-const TRACK = "/sigmamusicart-merry-christmas-background-christmas-music-270005.mp3";
+const TRACK = `${import.meta.env.BASE_URL}sigmamusicart-merry-christmas-background-christmas-music-270005.mp3`;
 
 export default function LullabyStudio({ onPlaybackChange = () => {} }) {
   const audioRef = useRef(null);
@@ -12,14 +12,20 @@ export default function LullabyStudio({ onPlaybackChange = () => {} }) {
   const [melody, setMelody] = useState(0);
   const [error, setError] = useState("");
 
-  const melodies = ["Winter Lullaby", "Moonlight Dreams", "Starlight Waltz"];
+  const melodies = [
+    "Winter Lullaby",
+    "Moonlight Dreams",
+    "Starlight Waltz",
+  ];
 
   const stopLullaby = (reset = true) => {
     const audio = audioRef.current;
+
     if (audio) {
       audio.pause();
       if (reset) audio.currentTime = 0;
     }
+
     setPlaying(false);
     onPlaybackChange(false);
   };
@@ -31,6 +37,7 @@ export default function LullabyStudio({ onPlaybackChange = () => {} }) {
     try {
       setError("");
       if (audio.ended) audio.currentTime = 0;
+
       await audio.play();
       setPlaying(true);
       onPlaybackChange(true);
@@ -43,14 +50,14 @@ export default function LullabyStudio({ onPlaybackChange = () => {} }) {
 
   const changeMelody = () => {
     setMelody((current) => (current + 1) % melodies.length);
-    if (audioRef.current && playing) {
-      audioRef.current.currentTime = 0;
-      audioRef.current.play().catch(() => {});
-    }
+
+    // This changes the displayed melody name.
+    // All three choices currently use the same audio file.
   };
 
   useEffect(() => {
     const audio = audioRef.current;
+
     return () => {
       if (audio) {
         audio.pause();
@@ -78,7 +85,9 @@ export default function LullabyStudio({ onPlaybackChange = () => {} }) {
       />
 
       <div className="lullaby-header">
-        <div className="lullaby-icon"><Moon size={22} /></div>
+        <div className="lullaby-icon">
+          <Moon size={22} />
+        </div>
         <div>
           <h2>Lullaby Studio</h2>
           <p>A little music for your midnight sky</p>
@@ -86,7 +95,9 @@ export default function LullabyStudio({ onPlaybackChange = () => {} }) {
       </div>
 
       <div className="lullaby-visual">
-        <div className={`lullaby-moon ${playing ? "is-playing" : ""}`}>☾</div>
+        <div className={`lullaby-moon ${playing ? "is-playing" : ""}`}>
+          ☾
+        </div>
         <Sparkles className="lullaby-star star-one" size={18} />
         <Sparkles className="lullaby-star star-two" size={14} />
         <span className="lullaby-orbit orbit-one" />
@@ -97,7 +108,11 @@ export default function LullabyStudio({ onPlaybackChange = () => {} }) {
         <Music size={18} />
         <div>
           <strong>{melodies[melody]}</strong>
-          <p>{playing ? "Playing softly beneath the stars" : "Ready when you are"}</p>
+          <p>
+            {playing
+              ? "Playing softly beneath the stars"
+              : "Ready when you are"}
+          </p>
         </div>
       </div>
 
@@ -106,15 +121,22 @@ export default function LullabyStudio({ onPlaybackChange = () => {} }) {
       <div className="lullaby-controls">
         <button
           type="button"
-          onClick={playing ? () => stopLullaby(false) : playLullaby}
+          onClick={
+            playing ? () => stopLullaby(false) : playLullaby
+          }
           aria-label={playing ? "Pause lullaby" : "Play lullaby"}
         >
           {playing ? <Pause size={18} /> : <Play size={18} />}
           {playing ? "Pause" : "Play lullaby"}
         </button>
 
-        <button type="button" onClick={changeMelody} aria-label="Change displayed melody">
-          <RotateCcw size={17} /> Change melody
+        <button
+          type="button"
+          onClick={changeMelody}
+          aria-label="Change displayed melody"
+        >
+          <RotateCcw size={17} />
+          Change melody
         </button>
 
         <button
@@ -123,7 +145,8 @@ export default function LullabyStudio({ onPlaybackChange = () => {} }) {
           onClick={() => setHumsOn((value) => !value)}
           aria-pressed={humsOn}
         >
-          <Moon size={17} /> Moon hums {humsOn ? "on" : "off"}
+          <Moon size={17} />
+          Moon hums {humsOn ? "on" : "off"}
         </button>
       </div>
 
